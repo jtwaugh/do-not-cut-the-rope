@@ -158,7 +158,7 @@ const Game: React.FC = () => {
                 cancelAnimationFrame(animationFrameId.current);
             }
         };
-    }, [initializePendulums, resizeCanvas, handleKeyDown, handleKeyUp]);
+    }, []);
 
     useEffect(() => {
         gravityRef.current = gravity;
@@ -229,15 +229,7 @@ const Game: React.FC = () => {
 
     return (
         <div>
-            {hasWon ? (
-                <div style={{ color: 'white', textAlign: 'center', marginTop: '20%' }}>
-                    <h1>You Win!</h1>
-                    <p>The climber has reached the origin.</p>
-                    <p>Press Space to play again!</p>
-                </div>
-            ) : (
-                <>
-                    <span style={{ color: "white" }}>Gravity:</span>
+          <span style={{ color: "white" }}>Gravity:</span>
                     <input
                         type="range"
                         min="0"
@@ -247,6 +239,14 @@ const Game: React.FC = () => {
                         onChange={handleSliderChange}
                         style={{ width: '20%' }}
                     />
+            {hasWon ? (
+                <div style={{ color: 'white', textAlign: 'center', marginTop: '20%' }}>
+                    <h1>You Win!</h1>
+                    <p>The climber has reached the origin.</p>
+                    <p>Press Space to play again!</p>
+                </div>
+            ) : (
+                <>
                 </>
             )}
             <canvas ref={canvasRef} style={{ background: '#000000' }} />
